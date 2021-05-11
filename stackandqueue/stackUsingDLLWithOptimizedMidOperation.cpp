@@ -29,6 +29,22 @@ class Stack{
         void deleteMid();
 };
 
+void Stack::pop(){
+    if(topPointer==NULL){
+        return;
+    }
+    DoublyLinkedList *temp = topPointer;
+    topPointer = topPointer->left;
+    temp->left=NULL;
+    free(temp);
+    if(midPointer->right!=NULL){
+        if(count%2==0){
+            midPointer = midPointer->left;
+        }
+    }
+    count--;
+}
+
 void Stack::push(int x){
     if(topPointer==NULL){
         topPointer = new DoublyLinkedList(x);
@@ -51,12 +67,21 @@ int Stack::top(){
     }
     return topPointer->value;
 }
+int Stack::mid(){
+    if(midPointer==NULL){
+        return -1;
+    }else{
+        if(count%2==0)
+            return midPointer->right->value;
+        else
+            return midPointer->value;
+    }
+}
 int main(){
     Stack st;
-    cout<<st.top()<<endl;
-    st.push(10);
-    st.push(20);
-    st.push(30);
-    st.push(40);
-    cout<<st.top()<<endl;
+    for(int i=1;i<=10;i++){
+        st.push(i);
+        cout<<"top = "<<st.top()<<endl;
+        cout<<"mid = "<<st.mid()<<endl;
+    }
 }
