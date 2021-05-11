@@ -90,5 +90,6 @@ int main(){
     }
     t.inorder(t.root);
     t.intervalOverlaps(t.root,new Interval(6,18));
+    cout<<"hello"<<endl;
 }
 
