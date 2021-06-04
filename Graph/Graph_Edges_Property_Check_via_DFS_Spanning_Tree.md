@@ -1,13 +1,18 @@
 1.  Running DFS on a connected component of a graph forms a DFS spanning tree 1 (or spanning forest if the graph has more than one component and DFS is run per component)
 
-2.  **Graph Edges** : 
+1.  **Graph Edges** - in directed graph: 
     1.  **Tree edges**: DFS_GRAY to vertex with DFS_WHITE.
     2.  **Back edges**: DFS_GRAY to vertex with DFS_GRAY
         1.  if parent[u]==v -> bidirectional edge
         2.  else backedge
     3.  **Forward/Cross edge**: DFS_GRAY to vertex with DFS_BLACK
 
+1.  IN undirected graph there is only two types of edges:
+    1.  Tree
+    2.  BackEdge
 
+1.  Every graph with n nodes and k connected components have atleast n-k edges
+so if a graph at most k connected components the answer is m-n+k
 
 ```
 void graphCheck(int u) {    // DFS for checking graph edge properties
